@@ -1,0 +1,851 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zesir">
+  <meta name="keywords" content="study">
+  
+    <meta name="description" content="Linux操作系统 bin：存放二进制执行文件  etc：存放系统配置文件  home：存放用户文件的根目录  lib：存放类库文件、内核模块  指令  切换目录cd  根目录&#x2F;  上级..  路径    展示当前目录中所有的内容ls  -a 展示包括隐藏内容在内的所有内容  -l 展示不包括隐藏内容其他所有内容的详细信息    创建文件夹mkdir  可以同时创建多个，空格隔开  mkdir -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="夜枕星河">
+<meta property="og:url" content="http://liyongze.top/2022/10/19/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="夜枕星河">
+<meta property="og:description" content="Linux操作系统 bin：存放二进制执行文件  etc：存放系统配置文件  home：存放用户文件的根目录  lib：存放类库文件、内核模块  指令  切换目录cd  根目录&#x2F;  上级..  路径    展示当前目录中所有的内容ls  -a 展示包括隐藏内容在内的所有内容  -l 展示不包括隐藏内容其他所有内容的详细信息    创建文件夹mkdir  可以同时创建多个，空格隔开  mkdir -">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-19T08:22:56.096Z">
+<meta property="article:modified_time" content="2022-10-19T08:22:12.025Z">
+<meta property="article:author" content="Zesir">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>夜枕星河</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liyongze.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-19 16:22" pubdate>
+          2022年10月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux操作系统"><a href="#Linux操作系统" class="headerlink" title="Linux操作系统"></a>Linux操作系统</h1><ol>
+<li><p>bin：存放二进制执行文件</p>
+</li>
+<li><p>etc：存放系统配置文件</p>
+</li>
+<li><p>home：存放用户文件的根目录</p>
+</li>
+<li><p>lib：存放类库文件、内核模块</p>
+</li>
+<li><p>指令</p>
+<ul>
+<li><p>切换目录cd</p>
+<ul>
+<li><p>根目录/</p>
+</li>
+<li><p>上级..</p>
+</li>
+<li><p>路径</p>
+</li>
+</ul>
+</li>
+<li><p>展示当前目录中所有的内容ls</p>
+<ul>
+<li><p>-a 展示包括隐藏内容在内的所有内容</p>
+</li>
+<li><p>-l 展示不包括隐藏内容其他所有内容的详细信息</p>
+</li>
+</ul>
+</li>
+<li><p>创建文件夹mkdir</p>
+<ul>
+<li><p>可以同时创建多个，空格隔开</p>
+</li>
+<li><p>mkdir -p ff/kk 嵌套创建，创建ff文件夹，在ff文件夹里再创建一个kk文件夹</p>
+</li>
+</ul>
+</li>
+<li><p>删除文件夹rmdir</p>
+<ul>
+<li>直接使用rmdir删除的话文件夹必须为空，可以使用rm -rf命令不询问来删除不为空的文件夹</li>
+<li>文件夹为空的话，同上创建文件夹，可以删除多个，可以删除嵌套（包括被嵌套的文件夹）</li>
+</ul>
+</li>
+<li><p>创建文件touch</p>
+<ul>
+<li>touch a.txt</li>
+</ul>
+</li>
+<li><p>删除文件rm</p>
+<ul>
+<li>直接rm有询问，不询问加-f</li>
+<li>不能直接rm文件夹名字，可以使用-r递归删除来删除文件夹和里面的内容</li>
+<li>rm -rf * 删除所有内容</li>
+</ul>
+</li>
+<li><p>编辑vim和vi</p>
+<ul>
+<li>先输入小写i进入插入模式，再进行编辑</li>
+<li>编辑完之后按Esc退出插入数据模式，在输入:wq!（小写）退出编辑器</li>
+<li>i当前、I当前行首、a当前位置之后、A当前行尾、o下一行、O上一行</li>
+<li>非插入数据模式下，dd快速删除一行数据，/s快速查找名字有s的文件（s可换）</li>
+</ul>
+</li>
+<li><p>展示内容cat、more、less、tail</p>
+<ul>
+<li>cat展示所有内容</li>
+<li>more可以分页，空格查看下一页，回车查看下一行</li>
+<li>less也是分页，同上，方向键上下可以查看上下行</li>
+<li>tail默认展示最后十行数据，加参数-5展示后5行</li>
+</ul>
+</li>
+<li><p>移动mv</p>
+<ul>
+<li>可以移动多个文件</li>
+<li>可以给文件改名 mv a.txt aa.txt</li>
+</ul>
+</li>
+<li><p>复制cp</p>
+<ul>
+<li>文件名不能重复，后缀名要写上</li>
+</ul>
+</li>
+<li><p>打包、压缩和解压tar</p>
+<ul>
+<li><p>打包：tar -cvf 名字.tar ./*</p>
+<p>​    c 创建/生成，意思是生成一个包</p>
+<p>​    v 展示整个打包的过程</p>
+<p>​    f 指定包名，包名的后缀名必须是*.tar</p>
+<p>​    ./*表示当前目录中所有内容打包</p>
+<p>​    也可以针对某个文件或者文件夹打包</p>
+</li>
+<li><p>压缩：tar -zcvf 名字.tar ./*</p>
+</li>
+<li><p>解压：tar -xvf 真实存在的包名/压缩包名</p>
+<p>​    tar -xvf *.tar -C /home/roott 把解压出来的内容放到指定目录中</p>
+</li>
+</ul>
+</li>
+<li><p>文件查找find</p>
+<ul>
+<li>find . 查看当前路径中所有文件和文件夹</li>
+<li>find /aa -name “*.txt” 查看指定目录中，名字是txt结尾的文件</li>
+<li>find /aa -name “* .txt” -o “*.mp3”，-o是或者的意思，有符合的就显示，没有就不显示</li>
+<li>find /aa ! -name “*.txt” ，!是非的意思，表示不是.txt结尾的文件</li>
+<li>find -type f -atime -7 表示查看7天内访问过的所有文件</li>
+</ul>
+</li>
+<li><p>展示当前所在路径pwd</p>
+</li>
+<li><p>查看网络连通ping加网站</p>
+</li>
+<li><p>显示系统运行时间uptime</p>
+</li>
+<li><p>展示详细文件信息stat</p>
+</li>
+<li><p>友好显示信息（数据大小进行单位化展示）ll -h</p>
+</li>
+<li><p>下载文件wget加下载网址</p>
+</li>
+<li><p>重定向输出&gt;和&gt;&gt;（右边没有会默认创建）</p>
+<ul>
+<li>cat a.txt &gt; b.txt</li>
+<li>ifconfig &gt; ifconfig.txt</li>
+<li>一个&gt;表示覆盖原有内容</li>
+<li>两个&gt;&gt;表示在原有内容基础上追加内容</li>
+</ul>
+</li>
+<li><p>查找符合条件的字符串grep</p>
+<ul>
+<li><p>grep 查找内容 文件名，表示在这个文件中查找这个内容</p>
+</li>
+<li><p>可以在最后跟–color，表示把查找内容高亮显示</p>
+</li>
+</ul>
+</li>
+<li><p>管道，将一个命令的输出用作另一个命令的输入 |</p>
+<ul>
+<li><p>例如ls –help | more 表示分页查询帮助信息</p>
+</li>
+<li><p>ps -ef | grep java 查询名称中包含java的进程</p>
+</li>
+<li><p>ps -ef | grep 2251 查询2251端口号对应的进程</p>
+</li>
+</ul>
+</li>
+<li><p>命令执行控制逻辑与&amp;&amp;，前真后执行，有假后不执行</p>
+</li>
+<li><p>网络通讯命令netstat，查看网络端口</p>
+<ul>
+<li>netstat -an | grep 3306 查询3306端口占用情况</li>
+</ul>
+</li>
+<li><p>搜索命令which、whereis、locate</p>
+<ul>
+<li><p>which查找给定命令的绝对路径</p>
+</li>
+<li><p>whereis查找命令的二进制程序、源代码文件以及man手册页等相关文件路径</p>
+</li>
+<li><p>locate使用前先用updatedb更新库，类似于find -name，比find -name快</p>
+</li>
+</ul>
+</li>
+<li><p>系统管理命令date、df、free、top、clear、ps、kill、who、hostname、uname</p>
+<ul>
+<li>date显示系统时间，-s可以自己设置</li>
+<li>df查看系统磁盘设备，默认为KB，-h显示G，-m显示MB</li>
+<li>free显示内存状态，-m显示MB</li>
+<li>top显示管理执行中进程，类似于任务管理器</li>
+<li>clear清屏</li>
+<li>ps -ef 查看所有进程，配合管道和grep可以定位查找某一进程</li>
+<li>kill杀进程，-9参数强制杀死</li>
+<li>who显示目前登入系统用户信息</li>
+<li>hostname查看主机名，使用vim /etc/sysconfig/network可以修改，需要重启虚拟机</li>
+<li>uname显示系统信息，-a可以详细显示</li>
+</ul>
+</li>
+<li><p>用户管理命令useradd、passwd、su、userdel</p>
+<ul>
+<li>useradd 添加用户，-d /home/xxx 指定home目录进行添加用户 -d </li>
+<li>passwd设置密码，跟用户名可以为指定用户设置</li>
+<li>su 切换用户</li>
+<li>userdel删除，直接用不会删除home目录，-f可以删除已登录的，-r可以删除用户以及home目录</li>
+</ul>
+</li>
+<li><p>组管理命令groupadd</p>
+<ul>
+<li>同useradd</li>
+<li>useradd 名字 -g 组名 可以创建用户指定组</li>
+<li>groupdel删除只能删除空组，有用户必须先删用户</li>
+</ul>
+</li>
+<li><p>查看用户的UID和GID命令id</p>
+<ul>
+<li>直接id 用户名</li>
+<li>查看系统文件<ul>
+<li>/etc/passwd 用户文件</li>
+<li>/etc/shadow 密码文件</li>
+<li>/etc/group 组信息文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改权限命令chmod</p>
+<ul>
+<li>rwx 分别为421，通过chmod 数字 文件名 可以修改权限</li>
+</ul>
+</li>
+<li><p>防火墙指令chkconfig</p>
+<ul>
+<li>永久关闭或打开 chkconfig iptables off/on</li>
+<li>查看关闭所有端口 chkconfig iptables –list</li>
+<li>临时关闭或打开 service iptables stop/start</li>
+<li>重启 service iptables restart</li>
+<li>查看防火墙状态 service iptables status</li>
+<li>通过vi命令修改端口开放信息 vi /etc/sysconfig/iptables</li>
+</ul>
+</li>
+<li><p>服务器通信指令ssh</p>
+<ul>
+<li>直接连接 ssh ip地址</li>
+<li>指定用户名和端口连接 默认端口22：ssh 用户名@ip地址 -p 端口号</li>
+<li>退出 logout</li>
+<li>传输文件scp 文件路径 目标主机用户名@ip:/文件夹名/</li>
+<li>拷贝文件夹 scp加参数-r</li>
+</ul>
+</li>
+<li><p>补充</p>
+<ul>
+<li>在Linux系统中，不以文件后缀区分文件类型，而是以第一个字符标识文件类型，不管是文件后缀是<code>.c</code>还是<code>.txt</code>或是其他后缀，只有是以-开头的就是普通文件<ul>
+<li>d：目录文件，简单来说就是文件夹，我们可以在该目录文件下新建文件</li>
+<li>-：普通文件，分为文本文件、动静态库、可执行程序等</li>
+<li>l：软链接（类似Windows的快捷方式）</li>
+<li>b：块设备文件（例如硬盘、光驱等）</li>
+<li>p：管道文件</li>
+<li>c：字符设备文件（例如屏幕等串口设备）</li>
+<li>s：套接口文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://liyongze.top/2022/10/19/Linux操作系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zesir</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/15/Redis/" title="Redis">
+                        <span class="hidden-mobile">Redis</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
